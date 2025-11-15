@@ -4,25 +4,33 @@ import java.util.Scanner;
 
 public class App {
 
-    public static Calculator c = new Calculator();
-    static Scanner s = new Scanner(System.in);
-
     public static void main(String[] args) {
+        Calculator calculator = new Calculator();
 
-        System.out.println("Bad Calculator v0.0.1");
-        while (true) {
-            System.out.print("> ");
-            String line = s.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Bad Calculator v1.0");
+            System.out.println("Type expressions like: 2 + 3  (or 'quit' to exit)");
 
+            while (true) {
+                System.out.print("> ");
+                String line = scanner.nextLine().trim();
 
-            if (line.equals("quit")) break;
+                if (line.equalsIgnoreCase("quit")) {
+                    System.out.println("Bye!");
+                    break;
+                }
 
-            try {
-                double result = c.parseAndCompute(line);
-                System.out.println("= " + result);
-            } catch (Exception e) {
+                if (line.isEmpty()) {
+                    System.out.println("Please enter an expression or 'quit'.");
+                    continue;
+                }
 
-                System.out.println("err");
+                try {
+                    double result = calculator.parseAndCompute(line);
+                    System.out.println("= " + result);
+                } catch (IllegalArgumentException | ArithmeticException e) {
+                    System.out.println("Invalid expression: " + e.getMessage());
+                }
             }
         }
     }
