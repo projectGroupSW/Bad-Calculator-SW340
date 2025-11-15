@@ -6,7 +6,7 @@ The goal of this project was to analyze the project, identify issues, apply refa
 
 ---
 
-## 🔹 Project Objectives
+##  Project Objectives
 - Run and understand the existing Calculator project  
 - Identify bugs and bad practices  
 - Refactor and improve code quality  
