@@ -36,19 +36,6 @@ src/
 
 pom.xml
 
-## How to Run the Project
-
-# 1) Run all tests (JUnit)
-mvn test
-
-# 2) Generate JaCoCo coverage report
-mvn verify
-# The report will appear at:
-# target/site/jacoco/index.html
-
-# 3) Run the application (IntelliJ)
-# Right-click App.java → Run
-
 
 ## JUnit Tests
 The project includes tests for:
@@ -67,10 +54,6 @@ After adding test cases:
 
 ## SonarCloud Analysis
 - New Code passed the Quality Gate
-- No bugs or vulnerabilities in the refactored code
-- Old bad code still shows issues (expected for the assignment)
 
-## Notes
-- The original project contained bugs by design.
-- Refactoring and testing improved code quality, readability, and reliability.
-- This README summarizes how to run, test, and evaluate the project.
+
+
