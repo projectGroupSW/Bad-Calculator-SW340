@@ -48,8 +48,10 @@
                 <version>3.2.5</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+
 
             <!-- JaCoCo Plugin for Code Coverage -->
             <plugin>

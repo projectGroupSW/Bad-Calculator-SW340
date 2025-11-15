@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Calculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bad-calculator</a> &gt; <a href="index.source.html" class="el_package">edu.pnu.badcalc</a> &gt; <span class="el_source">Calculator.java</span></div><h1>Calculator.java</h1><pre class="source lang-java linenums">package edu.pnu.badcalc;
+
+<span class="fc" id="L3">public class Calculator {</span>
+
+    public double last;
+
+    // Correct addition
+    public double add(double a, double b) {
+<span class="fc" id="L9">        last = a + b;</span>
+<span class="fc" id="L10">        return last;</span>
+    }
+
+    // Correct subtraction (no Math.abs)
+    public double subtract(double a, double b) {
+<span class="fc" id="L15">        last = a - b;</span>
+<span class="fc" id="L16">        return last;</span>
+    }
+
+    // Correct multiplication without casting to int
+    public double multiply(double a, double b) {
+<span class="fc" id="L21">        last = a * b;</span>
+<span class="fc" id="L22">        return last;</span>
+    }
+
+    // Division with proper zero check
+    public double divide(double a, double b) {
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (b == 0.0) {</span>
+<span class="fc" id="L28">            throw new ArithmeticException(&quot;Division by zero&quot;);</span>
+        }
+<span class="fc" id="L30">        last = a / b;</span>
+<span class="fc" id="L31">        return last;</span>
+    }
+
+    // Correct factorial implementation
+    public long factorial(int n) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (n &lt; 0) {</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException(&quot;n must be &gt;= 0&quot;);</span>
+        }
+<span class="fc" id="L39">        long result = 1;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 1; i &lt;= n; i++) {</span>
+<span class="fc" id="L41">            result *= i;</span>
+        }
+<span class="fc" id="L43">        return result;</span>
+    }
+
+    // Parses and computes an expression of the form &quot;a op b&quot;
+    public double parseAndCompute(String expr) {
+<span class="fc" id="L48">        String[] t = expr.trim().split(&quot;\\s+&quot;);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (t.length != 3) {</span>
+<span class="fc" id="L50">            throw new IllegalArgumentException(&quot;Expression must be 'a op b'&quot;);</span>
+        }
+
+<span class="fc" id="L53">        double a = Double.parseDouble(t[0]);</span>
+<span class="fc" id="L54">        String op = t[1];</span>
+<span class="fc" id="L55">        double b = Double.parseDouble(t[2]);</span>
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (op.equals(&quot;+&quot;)) return add(a, b);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (op.equals(&quot;-&quot;)) return subtract(a, b);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (op.equals(&quot;*&quot;)) return multiply(a, b);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (op.equals(&quot;/&quot;)) return divide(a, b);</span>
+
+<span class="fc" id="L62">        throw new IllegalArgumentException(&quot;Unknown operator: &quot; + op);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
