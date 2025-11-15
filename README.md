@@ -29,7 +29,7 @@ The goal of this project was to analyze the project, identify issues, apply refa
 ---
 
 
-##Project Structure
+## Project Structure
 
 src/
   main/
